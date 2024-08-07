@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.body-grow:hover {
+  transform: scale(1.05);
+}
+
+@keyframes eye {
+  0% {
+    height: 1rem;
+  }
+  50% {
+    height: 1rem;
+  }
+  52% {
+    height: 0.25rem;
+  }
+  54% {
+    height: 1rem;
+  }
+  100% {
+    height: 1rem;
+  }
+}
+
+@keyframes side-eye {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes cheek {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.animate-eye {
+  animation: eye 2s ease-in-out infinite;
+}
+
+.animate-side-eye {
+  animation: side-eye 4s ease-in-out infinite;
+}
+
+.animate-cheek {
+  animation: cheek 4s ease-in-out infinite;
+}
