@@ -36,7 +36,7 @@ function InputForm({ isAbled, initialData, onSubmit, updateFormData }) {
     onSubmit();
   };
 
-  console.log(errors);
+  console.log("Form Data in InputForm:", initialData);
 
   return (
     <form onSubmit={handleSubmit(onFormSubmit)}>

@@ -58,6 +58,7 @@ function OrderData({ id, isAbled, updateFormData }) {
     });
   };
 
+  console.log("Form Data in OrderData:", formData);
   return (
     <>
       <ButtonProgressiveForm

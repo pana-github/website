@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { InputWithLabel } from "./ButtonsAndInputs";
 
@@ -13,12 +12,13 @@ function CreateCustomerData({ isAbled, updateFormData }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-    updateFormData(formData);
-    console.log("Form Data accquired", formData);
+
+    setFormData((prevData) => {
+      const newData = { ...prevData, [name]: value };
+
+      updateFormData(newData);
+      return newData;
+    });
   };
 
   return (
@@ -29,7 +29,7 @@ function CreateCustomerData({ isAbled, updateFormData }) {
         type={"text"}
         value={formData["得意先コード"]}
         isAbled={isAbled}
-        onChange={handleInputChange}
+        handleChange={handleInputChange}
         name="得意先コード"
       />
       <InputWithLabel
@@ -59,6 +59,10 @@ function CreateCustomerData({ isAbled, updateFormData }) {
         onChange={handleInputChange}
         name="備考"
       />
+      <div>{formData["得意先コード"]}</div>
+      <div>{formData["直送コード"]}</div>
+      <div>{formData["注文№"]}</div>
+      <div>{formData["備考"]}</div>
     </div>
   );
 }

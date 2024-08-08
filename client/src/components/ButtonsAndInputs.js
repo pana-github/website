@@ -83,7 +83,14 @@ ButtonBasic.propTypes = {
   handleFunction: PropTypes.func.isRequired,
 };
 
-export const InputWithLabel = ({ label, defaultVal, isAbled, cl }) => {
+export const InputWithLabel = ({
+  label,
+  defaultVal,
+  isAbled,
+  cl,
+  handleChange,
+  value,
+}) => {
   return (
     <Input
       isRequired
@@ -99,8 +106,8 @@ export const InputWithLabel = ({ label, defaultVal, isAbled, cl }) => {
         label: "p-0 mb-5 ",
         mainWrapper: `w-1/2 m-2 `,
       }}
-      // onChange={onChange}
-      // value={value}
+      onChange={handleChange}
+      value={value}
       errorMessage="有効な値を入力してください。"
     ></Input>
   );
@@ -119,6 +126,8 @@ export const InputWithSideLabel = ({
   type,
   defaultVal,
   name,
+  value,
+  handleInputChange,
 }) => {
   <Input
     isDisabled={isAbled ? true : false}
@@ -130,7 +139,7 @@ export const InputWithSideLabel = ({
     name={name}
     classNames={{ label: "mx-10 my-5 w-28", input: "w-56" }}
     defaultValue={defaultVal}
-    value={name}
-    // onChange={handleInputChange}
+    value={value}
+    onChange={handleInputChange}
   />;
 };
