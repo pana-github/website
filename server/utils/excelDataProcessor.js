@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 const XLSX = require("xlsx");
-const path = require("path");
+// const path = require("path");
 
 async function processExcelData(filePath, index) {
   try {
@@ -25,7 +26,7 @@ async function processExcelData(filePath, index) {
       const currentData = {
         id: id,
         data: Object.fromEntries(
-          headers.map((header, index) => [header, row[index] || ""])
+          headers.map((header, index) => [header, (row[index] || "").trim()])
         ),
       };
       if (!dataMap.has(id) || isNewer(currentData, dataMap.get(id))) {

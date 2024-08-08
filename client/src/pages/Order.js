@@ -8,7 +8,7 @@ import OrderData from "../components/OderData";
 import CreateOrderData from "../components/CreateOrderData";
 import CreateCustomerData from "../components/CreateCustomerData";
 import InputForm from "../components/InputForm";
-import Header from "../components/Header";
+
 import { HeaderSecondary } from "../components/Header";
 
 function AddressForm() {
@@ -18,19 +18,13 @@ function AddressForm() {
     () => location.pathname.endsWith("/details"),
     [location.pathname]
   );
+  const Header = React.lazy(() => import("../components/Header"));
 
   //const [currentStep, setCurrentStep] = useState(1);
   // eslint-disable-next-line no-unused-vars
   const [formData, setFormData] = useState({});
 
   const [isAbled, setIsAbled] = useState(true);
-
-  // const nextStep = () => {
-  //   setCurrentStep(currentStep + 1);
-  // };
-  // const prevStep = () => {
-  //   setCurrentStep(currentStep - 1);
-  // };
 
   useEffect(() => {
     if (isDetailsRoute) {
@@ -49,7 +43,9 @@ function AddressForm() {
   return (
     <>
       <div>
-        <Header />
+        <React.Suspense fallback={<div>Loading...</div>}>
+          <Header />
+        </React.Suspense>
         <HeaderSecondary
           id={decodeURIComponent(id)}
           isAbled={isAbled}

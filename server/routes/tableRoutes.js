@@ -1,13 +1,13 @@
-// eslint-disable-next-line no-undef
+/* eslint-disable no-undef */
+
 const express = require("express");
 const router = express.Router();
-// eslint-disable-next-line no-undef
+
 const fs = require("fs");
-// eslint-disable-next-line no-undef
+
 const path = require("path");
 
 const processedData = JSON.parse(
-  // eslint-disable-next-line no-undef
   fs.readFileSync(
     path.join(__dirname, "..", "processedDataヘッダデータ.json"),
     "utf8"
@@ -95,7 +95,6 @@ router.get("/search", async (req, res) => {
   }
 });
 
-// eslint-disable-next-line no-undef
 module.exports = router;
 
 // // Example route to update a row of data

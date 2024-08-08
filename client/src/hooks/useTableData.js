@@ -2,10 +2,10 @@ import { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import { useLocalStorage } from "@uidotdev/usehooks";
 
-const API_BASE_URL = "http://10.190.114.40:3001/api";
+// const API_BASE_URL = "http://10.190.114.40:3001/api";
 const ROWS_PER_PAGE = 15;
 
-export function useTableData(initialPage = 1) {
+export function useTableData(initialPage = 1, baseURL) {
   const [data, setData] = useState([]);
   const [columns, setColumns] = useState([]);
   const [page, setPage] = useLocalStorage(initialPage);
@@ -19,11 +19,14 @@ export function useTableData(initialPage = 1) {
     const endIndex = pageNumber * ROWS_PER_PAGE;
 
     try {
-      const response = await axios.get(`${API_BASE_URL}/data`, {
+      const response = await axios.get(`${baseURL}/data`, {
         params: { limit: ROWS_PER_PAGE, start: startIndex, end: endIndex },
       });
       const responseData = response.data;
-      setCachedPages((prev) => ({ ...prev, [pageNumber]: responseData.data }));
+      setCachedPages((prev) => ({
+        ...prev,
+        [pageNumber]: responseData.data,
+      }));
       setData(responseData.data || []);
       setTotalPages(Math.ceil(responseData.total / ROWS_PER_PAGE));
 

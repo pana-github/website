@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback } from "react";
 import TableElement from "../components/TableElement";
 import SearchForm from "../components/SearchForm";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { headerVal } from "../data/displayHeaders";
 import Header from "../components/Header";
 function Home() {
   const [findValues, setFindValues] = React.useState({
@@ -15,7 +15,14 @@ function Home() {
   }, []);
 
   const memoizedTableElement = useMemo(
-    () => <TableElement newValues={findValues} />,
+    () => (
+      <TableElement
+        newValues={findValues}
+        baseURL="http://10.190.114.40:3001/api"
+        headerVal={headerVal}
+        baseNavigate="order"
+      />
+    ),
     [findValues]
   );
 

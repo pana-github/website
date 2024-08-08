@@ -1,8 +1,8 @@
-// eslint-disable-next-line no-undef
+/* eslint-disable no-undef */
+
 const fs = require("fs");
-// eslint-disable-next-line no-undef
 const path = require("path");
-// eslint-disable-next-line no-undef
+
 const processExcelData = require("./utils/excelDataProcessor");
 
 const filePaths = [
@@ -22,7 +22,6 @@ async function initialize() {
       );
       console.log(`Excel processing complete. Writing to JSON file...`);
       fs.writeFileSync(
-        // eslint-disable-next-line no-undef
         path.join(
           __dirname,
           `processedData${path.basename(filePath, ".xlsx")}.json`
@@ -33,7 +32,6 @@ async function initialize() {
 
       console.log(
         `Data processing complete. Results stored in ${path.join(
-          // eslint-disable-next-line no-undef
           __dirname,
           `processedData${path.basename(filePath, ".xlsx")}.json`
         )}`

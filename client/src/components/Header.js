@@ -17,15 +17,15 @@ import { ButtonAction } from "./ButtonsAndInputs";
 import { GoPencil } from "react-icons/go";
 import { TbX } from "react-icons/tb";
 
-const Header = () => {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const navigate = useNavigate();
 
   return (
     <Navbar
       shouldHideOnScroll
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
+      // isMenuOpen={isMenuOpen}
+      // onMenuOpenChange={setIsMenuOpen}
       isBordered
       classNames={{
         base: "px-5 py-3",
@@ -33,10 +33,10 @@ const Header = () => {
       }}
     >
       <NavbarContent>
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        {/* <NavbarMenuToggle
+          // aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
-        />
+        /> */}
         <NavbarBrand>
           <Link href="/">
             <Logo />
@@ -68,7 +68,7 @@ const Header = () => {
           />
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu className="my-10">
+      {/* <NavbarMenu className="my-10">
         <NavbarMenuItem>
           <Link color={"secondary"} className="w-full" href="/" size="lg">
             ホーム
@@ -94,10 +94,10 @@ const Header = () => {
             新規
           </Link>
         </NavbarMenuItem>
-      </NavbarMenu>
+      </NavbarMenu> */}
     </Navbar>
   );
-};
+}
 
 export const HeaderSecondary = ({
   id,
@@ -163,5 +163,3 @@ HeaderSecondary.propTypes = {
   onIsAbledChange: PropTypes.func.isRequired,
   isInDetails: PropTypes.bool.isRequired,
 };
-
-export default Header;

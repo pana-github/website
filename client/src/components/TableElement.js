@@ -14,9 +14,7 @@ import { PropTypes } from "prop-types";
 import { useTableData } from "../hooks/useTableData";
 import { useFindTableData } from "../hooks/useFindTableData";
 
-import { headerVal } from "../data/displayHeaders";
-
-function TableElement({ newValues }) {
+function TableElement({ newValues, baseURL, headerVal, baseNavigate }) {
   const {
     data: generalData,
     columns,
@@ -24,7 +22,7 @@ function TableElement({ newValues }) {
     setPage: setGeneralPage,
     totalPages: generalTotalPages,
     isLoading,
-  } = useTableData();
+  } = useTableData(1, baseURL);
 
   const {
     data: filteredData,
@@ -50,8 +48,8 @@ function TableElement({ newValues }) {
 
   const setCurrentPage = searchParams ? setFilteredPage : setGeneralPage;
 
-  const handleEdit = (id) => {
-    window.open(`order/${encodeURIComponent(id)}`, "target=_blank");
+  const handleEdit = (id, baseNavigate) => {
+    window.open(`${baseNavigate}/${encodeURIComponent(id)}`, "target=_blank");
   };
 
   return (
@@ -88,12 +86,15 @@ function TableElement({ newValues }) {
           selectionBehavior="replace"
           selectionMode="single"
           onRowAction={(key) => {
-            handleEdit(key);
+            handleEdit(key, baseNavigate);
           }}
           removeWrapper
           bottomContent={
             currentTotalPages > 0 ? (
-              <div className="flex w-full justify-center sticky bottom-3">
+              <div
+                className="flex w-full justify-center sticky bottom-3 left-0
+               "
+              >
                 <Pagination
                   isCompact
                   showControls
@@ -155,6 +156,10 @@ function TableElement({ newValues }) {
   );
 }
 
+TableElement.propTypes = {
+  newValues: PropTypes.object.isRequired,
+  baseURL: PropTypes.string.isRequired,
+};
 TableElement.propTypes = {
   newValues: PropTypes.object.isRequired,
 };
