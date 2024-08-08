@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useRowData } from "../hooks/useRowData";
 import { useNavigate } from "react-router-dom";
-// import { Input } from "@nextui-org/react";
-
 import { ButtonProgressiveForm, InputWithLabel } from "./ButtonsAndInputs";
 
-function OrderData({ id, isAbled }) {
+function OrderData({ id, isAbled, updateFormData }) {
   const { rowData } = useRowData(id);
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({});
+
+  React.useEffect(() => {
+    if (rowData) {
+      setFormData(rowData);
+      updateFormData(rowData);
+    }
+  }, [rowData]);
 
   React.useEffect(() => {
     if (rowData === undefined) {
@@ -19,6 +25,7 @@ function OrderData({ id, isAbled }) {
   OrderData.propTypes = {
     id: PropTypes.string.isRequired,
     isAbled: PropTypes.bool.isRequired,
+    updateFormData: PropTypes.func.isRequired,
   };
 
   const [isVisible, setIsVisible] = useState({
@@ -42,6 +49,14 @@ function OrderData({ id, isAbled }) {
       console.error("Error toggling visibility:", error);
     }
   };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => {
+      const newData = { ...prevData, [name]: value };
+      updateFormData(newData);
+      return newData;
+    });
+  };
 
   return (
     <>
@@ -53,6 +68,8 @@ function OrderData({ id, isAbled }) {
         <>
           <div className="mb-3 mx-5 grid grid-cols-2 gap-3 text-lg">
             <InputWithLabel
+              onChange={handleInputChange}
+              value={formData["注文ＮＯ"] || ""}
               label={"注文ＮＯ"}
               type={"text"}
               defaultVal={rowData.注文ＮＯ}
@@ -70,6 +87,8 @@ function OrderData({ id, isAbled }) {
         <>
           <div className="mb-3 mx-5 grid grid-cols-2 gap-3">
             <InputWithLabel
+              onChange={handleInputChange}
+              value={formData["住所コード"] || ""}
               label={"住所コード"}
               type={"text"}
               defaultVal={rowData.住所コード}
@@ -77,6 +96,8 @@ function OrderData({ id, isAbled }) {
             />
 
             <InputWithLabel
+              onChange={handleInputChange}
+              value={formData["直送先名"] || ""}
               label={"直送先名"}
               type={"text"}
               defaultVal={rowData.直送先名}
@@ -84,12 +105,16 @@ function OrderData({ id, isAbled }) {
             />
 
             <InputWithLabel
+              onChange={handleInputChange}
+              value={formData["配送先住所１"] || ""}
               label={"配送先住所１"}
               type={"text"}
               defaultVal={rowData.配送先住所１}
               isAbled={isAbled}
             />
             <InputWithLabel
+              onChange={handleInputChange}
+              value={formData["配送先住所２"] || ""}
               label={"配送先住所２"}
               type={"text"}
               defaultVal={rowData.配送先住所２}
@@ -97,12 +122,16 @@ function OrderData({ id, isAbled }) {
             />
 
             <InputWithLabel
+              onChange={handleInputChange}
+              value={formData["郵便番号７桁"] || ""}
               label={"郵便番号７桁"}
               type={"text"}
               defaultVal={rowData.郵便番号７桁}
               isAbled={isAbled}
             />
             <InputWithLabel
+              onChange={handleInputChange}
+              value={formData["電話番号"] || ""}
               label={"電話番号"}
               type={"text"}
               defaultVal={rowData.電話番号}
@@ -119,12 +148,16 @@ function OrderData({ id, isAbled }) {
         <>
           <div className="mb-3 mx-5 grid grid-cols-2 gap-3">
             <InputWithLabel
+              onChange={handleInputChange}
+              value={formData["件名ＮＯ"] || ""}
               label={"件名ＮＯ"}
               type={"text"}
               defaultVal={rowData.件名ＮＯ}
               isAbled={isAbled}
             />
             <InputWithLabel
+              onChange={handleInputChange}
+              value={formData["件名備考１"] || ""}
               label={"件名備考１"}
               type={"text"}
               defaultVal={rowData.件名備考１}

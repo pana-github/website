@@ -1,15 +1,16 @@
 import React from "react";
+import { useLocation } from "react-router";
 import Header from "../components/Header";
 
 import TableElement from "../components/TableElement";
 import { hinbanHeaderVal } from "../data/displayHinbanHeaders";
-export default function Hinban() {
-  const [findValues, setFindValues] = React.useState({
-    phoneNumbers: "",
-    remarks: "",
-    destinationName: "",
-  });
 
+export default function Hinban() {
+  const location = useLocation();
+  const formData = location.state?.formData || {};
+  const [findValues] = React.useState({});
+
+  console.log(formData);
   const memoizedTableElement = React.useMemo(
     () => (
       <TableElement

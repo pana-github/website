@@ -99,6 +99,8 @@ export const InputWithLabel = ({ label, defaultVal, isAbled, cl }) => {
         label: "p-0 mb-5 ",
         mainWrapper: `w-1/2 m-2 `,
       }}
+      // onChange={onChange}
+      // value={value}
       errorMessage="有効な値を入力してください。"
     ></Input>
   );
