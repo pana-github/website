@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import axios from "axios";
 import { useLocalStorage } from "@uidotdev/usehooks";
 
-const API_BASE_URL = "http://10.190.114.40:3001/api";
+const API_BASE_URL = "http://10.190.114.176:3001/api";
 const rowsPerPage = 15;
 
 export function useFindTableData({ newValues }, initialPage = 1) {

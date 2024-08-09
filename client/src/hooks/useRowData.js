@@ -8,7 +8,7 @@ export function useRowData(id) {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://10.190.114.40:3001/api/edit/${decodeURIComponent(id)}`
+          `http://10.190.114.176:3001/api/edit/${decodeURIComponent(id)}`
         );
         const responseData = response.data;
         setRowData(responseData.data);

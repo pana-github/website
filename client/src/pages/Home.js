@@ -18,7 +18,7 @@ function Home() {
     () => (
       <TableElement
         newValues={findValues}
-        baseURL="http://10.190.114.40:3001/api"
+        baseURL="http://10.190.114.176:3001/api"
         headerVal={headerVal}
         baseNavigate="order"
       />

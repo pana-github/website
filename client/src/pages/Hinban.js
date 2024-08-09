@@ -19,7 +19,7 @@ export default function Hinban() {
     () => (
       <TableElement
         newValues={findValues}
-        baseURL="http://10.190.114.40:3001/api/hinban"
+        baseURL="http://10.190.114.176:3001/api/hinban"
         headerVal={hinbanHeaderVal}
         baseNavigate="hinban"
       />
@@ -38,7 +38,7 @@ export default function Hinban() {
       <Header />
       <div className="font-['YuGothic'] text-primary-500">
         <div className="text-center m-3 my-5 mx-10">
-          <h1 className="text-xl font-bold">品番ピック​​</h1>
+          <h1 className="text-xl font-bold">品番ピック</h1>
           <h2 className="my-1 text-lg">データベース検索</h2>
         </div>
         <div className="grid grid-cols-4 gap-4 ">
@@ -53,7 +53,6 @@ export default function Hinban() {
         isOpen={isModalOpen}
         onOpenChange={() => setIsModalOpen(false)}
       />
-      ;
     </>
   );
 }
