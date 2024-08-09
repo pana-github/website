@@ -29,7 +29,7 @@ function SearchForm({ onValueChange }) {
     });
   };
 
-  const searchInputs = (e) => {
+  const searchInputs = () => {
     // e.preventDefault();
     onValueChange(inputData);
   };

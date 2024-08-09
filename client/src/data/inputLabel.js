@@ -37,7 +37,8 @@ export const inputLabel = [
     name: "fax",
     type: "fax",
     pattern:
-      /^(\+?\d{1,}(\s?|\-?)\d*(\s?|\-?)\(?\d{2,}\)?(\s?|\-?)\d{3,}\s?\d{3,})$/,
+      /^[\uFF10-\uFF19\uFF21-\uFF3A\uFF41-\uFF5A\u4E00-\u6800\u6802-\u6851\u6853-\u9ad8\u9ada-\u9FFF\u3041-\u3096\u30A1-\u30FA（）．＿＋－―ーゞ々／・＆！'：\u3000]+$/,
+
     message: "有効な値を入力してください。",
   },
   {

@@ -64,6 +64,7 @@ ButtonAction.propTypes = {
   icon: PropTypes.element,
   color: PropTypes.string,
   type: PropTypes.string,
+  size: PropTypes.string,
 };
 
 export const ButtonBasic = ({ color, innerText, handleFunction }) => {
@@ -126,9 +127,11 @@ export const InputWithLabel = ({
 
 InputWithLabel.propTypes = {
   label: PropTypes.string.isRequired,
-  defaultVal: PropTypes.string,
+  name: PropTypes.string.isRequired,
   isAbled: PropTypes.bool,
   cl: PropTypes.string,
+  handleChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
 };
 
 export const InputWithSideLabel = ({

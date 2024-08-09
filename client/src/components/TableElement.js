@@ -177,8 +177,13 @@ function TableElement({ newValues, baseURL, headerVal, baseNavigate }) {
 TableElement.propTypes = {
   newValues: PropTypes.object.isRequired,
   baseURL: PropTypes.string.isRequired,
+  headerVal: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  baseNavigate: PropTypes.string.isRequired,
 };
-TableElement.propTypes = {
-  newValues: PropTypes.object.isRequired,
-};
+
 export default React.memo(TableElement);

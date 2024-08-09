@@ -23,8 +23,8 @@ export default function Header() {
 
   return (
     <Navbar
-      // isMenuOpen={isMenuOpen}
-      // onMenuOpenChange={setIsMenuOpen}
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
       isBordered
       classNames={{
         base: "px-5 py-3",
@@ -32,10 +32,10 @@ export default function Header() {
       }}
     >
       <NavbarContent>
-        {/* <NavbarMenuToggle
+        <NavbarMenuToggle
           // aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
-        /> */}
+        />
         <NavbarBrand>
           <Link href="/">
             <Logo />
@@ -67,7 +67,7 @@ export default function Header() {
           />
         </NavbarItem>
       </NavbarContent>
-      {/* <NavbarMenu className="my-10">
+      <NavbarMenu className="my-10">
         <NavbarMenuItem>
           <Link color={"secondary"} className="w-full" href="/" size="lg">
             ホーム
@@ -93,7 +93,7 @@ export default function Header() {
             新規
           </Link>
         </NavbarMenuItem>
-      </NavbarMenu> */}
+      </NavbarMenu>
     </Navbar>
   );
 }
