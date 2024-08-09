@@ -48,7 +48,7 @@ export const ButtonAction = ({
       variant="shadow"
       className="h-10 w-full text-medium px-5 "
       startContent={icon}
-      onClick={handleFunction}
+      onPress={handleFunction}
     >
       {innerText}
     </Button>
