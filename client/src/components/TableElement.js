@@ -61,13 +61,31 @@ function TableElement({ newValues, baseURL, headerVal, baseNavigate }) {
             <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 overflow-hidden w-32 h-32 rounded-b-full">
               <div className="absolute bottom-[-0.3rem] left-1/2 transform -translate-x-1/2 w-24 h-32 border-4 border-primary-900 bg-white rounded-lg">
                 <div className="relative mt-6">
-                  <div className="absolute top-0 mx-5 w-12 h-4">
-                    <div className="absolute bottom-0.5 left-1.5 w-2.5 h-[1rem] rounded-full bg-primary-900 animate-side-eye"></div>
+                  {/* <div className="absolute top-0 mx-5 w-12 h-4">
+                    <div className="absolute bottom-0.5 left-1.5 w-2.5 h-[1rem] rounded-full bg-primary-900 animate-animate-side-eye"></div>
                     <div className="absolute bottom-0.5 right-1.5 w-2.5 h-[1rem] rounded-full bg-primary-900 animate-side-eye"></div>
+                  </div> */}
+                  <div className="flex flex-row absolute top-0 mx-3 rounded-sm ">
+                    {/* /\/\/\/\ */}
+                    <div className="flex flex-row  bottom-0.5  animate-side-eye">
+                      <div className=" tranform -rotate-45  w-4 h-1 bg-primary-900 translate-x-1/2"></div>
+                      <div className=" tranform rotate-45  w-4 h-1 bg-primary-900 -translate-x-1/2"></div>
+                    </div>
+                    <div className="flex flex-row bottom-0.5  animate-side-eye">
+                      <div className=" tranform -rotate-45  w-4 h-1 bg-primary-900 translate-x-1/2"></div>
+                      <div className=" tranform rotate-45  w-4 h-1 bg-primary-900 -translate-x-1/2"></div>
+                    </div>
                   </div>
                   <div className="absolute top-4 left-4 w-4 h-1 bg-secondary rounded-full animate-cheek"></div>
                   <div className="absolute top-4 right-4 w-4 h-1 bg-secondary rounded-full animate-cheek"></div>
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-4 h-1 bg-primary-900 rounded-sm"></div>
+                  <div className="flex flex-row absolute top-9 mx-5 h-4 items-end">
+                    <div className="w-2 h-1.5 bg-primary-900 skew-y-[-45deg]"></div>
+                    <div className="w-2 h-1.5 bg-primary-900 skew-y-[45deg]"></div>
+                    <div className="w-2 h-1.5 bg-primary-900 skew-y-[-45deg]"></div>
+                    <div className="w-2 h-1.5 bg-primary-900 skew-y-[45deg]"></div>
+                    <div className="w-2 h-1.5 bg-primary-900 skew-y-[-45deg]"></div>
+                    <div className="w-2 h-1.5 bg-primary-900 skew-y-[45deg]"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -108,8 +126,8 @@ function TableElement({ newValues, baseURL, headerVal, baseNavigate }) {
             ) : null
           }
           classNames={{
-            base: "max-h-[60vh] overflow-scroll my-10 mx-0 p-0 ",
-            table: "min-h-[400px] my-8",
+            base: "max-h-[65vh] overflow-scroll my-5 mx-0 px-10 ",
+            table: "min-h-[400px] my-5 text-sm",
           }}
         >
           <TableHeader>

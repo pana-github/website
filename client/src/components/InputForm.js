@@ -21,8 +21,8 @@ function InputForm({ isAbled, initialData, updateFormData }) {
   } = useForm({
     defaultValues: {
       ...initialData,
-      desiredDate: today(),
-      remarksDate: today(),
+      desiredDate: today().toString().replace(/-/g, ""),
+      remarksDate: today().toString().replace(/-/g, ""),
       officeCode: "",
       client: "",
       facility: "",
@@ -59,32 +59,15 @@ function InputForm({ isAbled, initialData, updateFormData }) {
             <Controller
               name="desiredDate"
               control={control}
-              rules={{ required: "希望日付は必須です" }}
+              rules={{
+                required: "希望日付は必須です",
+                pattern: {
+                  value: /^\d{8}$/,
+                  message: "日付は'YYYYMMDD'形式で入力してください",
+                },
+              }}
               render={({ field }) => (
-                <Input
-                  {...field}
-                  isRequired
-                  validationBehavior="native"
-                  isDisabled={isAbled}
-                  radius="sm"
-                  type="text"
-                  label="希望日付"
-                  labelPlacement="outside-left"
-                  classNames={{
-                    base: "flex-row justify-around w-4/5",
-                    label: "mx-10 my-3 w-28",
-                    mainWrapper: "w-56",
-                  }}
-                  errorMessage={errors.desiredDate?.message}
-                />
-              )}
-            />
-            <div className="flex flex-row gap-3">
-              <Controller
-                name="remarksDate"
-                control={control}
-                rules={{ required: "備考日付は必須です" }}
-                render={({ field }) => (
+                <>
                   <Input
                     {...field}
                     isRequired
@@ -92,15 +75,53 @@ function InputForm({ isAbled, initialData, updateFormData }) {
                     isDisabled={isAbled}
                     radius="sm"
                     type="text"
-                    label="備考日付"
+                    label="希望日付"
                     labelPlacement="outside-left"
                     classNames={{
                       base: "flex-row justify-around w-4/5",
                       label: "mx-10 my-3 w-28",
                       mainWrapper: "w-56",
                     }}
-                    errorMessage={errors.remarksDate?.message}
+                    errorMessage={errors.desiredDate?.message}
                   />
+                  {errors.desiredDate && (
+                    <div className="text-red-500 mt-4">
+                      <span>{errors.desiredDate.message}</span>
+                    </div>
+                  )}
+                </>
+              )}
+            />
+            <div className="flex flex-row gap-3">
+              <Controller
+                name="remarksDate"
+                control={control}
+                rules={{
+                  required: "備考日付は必須です",
+                  pattern: {
+                    value: /^\d{8}$/,
+                    message: "日付は'YYYYMMDD'形式で入力してください",
+                  },
+                }}
+                render={({ field }) => (
+                  <>
+                    <Input
+                      {...field}
+                      isRequired
+                      validationBehavior="native"
+                      isDisabled={isAbled}
+                      radius="sm"
+                      type="text"
+                      label="備考日付"
+                      labelPlacement="outside-left"
+                      classNames={{
+                        base: "flex-row justify-around w-4/5",
+                        label: "mx-10 my-3 w-28",
+                        mainWrapper: "w-56",
+                      }}
+                      errorMessage={errors.remarksDate?.message}
+                    />
+                  </>
                 )}
               />
               <Controller
@@ -134,24 +155,37 @@ function InputForm({ isAbled, initialData, updateFormData }) {
                 key={label.name}
                 name={label.name}
                 control={control}
-                rules={{ required: `${label.label}は必須です` }}
+                rules={{
+                  required: `${label.label}は必須です`,
+                  pattern: {
+                    value: label.pattern,
+                    message: label.message,
+                  },
+                }}
                 render={({ field }) => (
-                  <Input
-                    {...field}
-                    isRequired
-                    validationBehavior="native"
-                    isDisabled={isAbled}
-                    radius="sm"
-                    type={label.type}
-                    label={label.label}
-                    labelPlacement="outside-left"
-                    classNames={{
-                      base: "flex-row justify-around w-4/5",
-                      label: "mx-10 my-3 w-28",
-                      mainWrapper: "w-56",
-                    }}
-                    errorMessage={errors[label.name]?.message}
-                  />
+                  <>
+                    <Input
+                      {...field}
+                      isRequired
+                      validationBehavior="native"
+                      isDisabled={isAbled}
+                      radius="sm"
+                      type={label.type}
+                      label={label.label}
+                      labelPlacement="outside-left"
+                      classNames={{
+                        base: "flex-row justify-around w-4/5",
+                        label: "mx-10 my-3 w-28",
+                        mainWrapper: "w-56",
+                      }}
+                      errorMessage={errors[label.name]?.message}
+                    />
+                    {errors[label.name] && (
+                      <div className="text-red-500 mt-4">
+                        <span>{errors[label.name].message}</span>
+                      </div>
+                    )}
+                  </>
                 )}
               />
             ))}

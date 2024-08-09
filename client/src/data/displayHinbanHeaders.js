@@ -7,10 +7,7 @@ export const hinbanHeaderVal = [
     name: "classification",
     label: "分類",
   },
-  {
-    name: "searchKey",
-    label: "検索キー",
-  },
+
   {
     name: "shubetsu",
     label: "種別",
@@ -28,7 +25,7 @@ export const hinbanHeaderVal = [
     label: "廃版",
   },
   {
-    name: "remarks",
-    label: "備考",
+    name: "searchKey",
+    label: "検索キー",
   },
 ];

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useLocalStorage } from "@uidotdev/usehooks";
 
 // const API_BASE_URL = "http://10.190.114.40:3001/api";
-const ROWS_PER_PAGE = 15;
+const ROWS_PER_PAGE = 5;
 
 export function useTableData(initialPage = 1, baseURL) {
   const [data, setData] = useState([]);

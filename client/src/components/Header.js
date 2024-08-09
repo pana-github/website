@@ -23,7 +23,6 @@ export default function Header() {
 
   return (
     <Navbar
-      shouldHideOnScroll
       // isMenuOpen={isMenuOpen}
       // onMenuOpenChange={setIsMenuOpen}
       isBordered
@@ -43,7 +42,7 @@ export default function Header() {
           </Link>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent className="hidden sm:flex gap-10 text-3xl" justify="right">
+      <NavbarContent className="hidden sm:flex gap-10 text-2xl" justify="right">
         <NavbarItem isActive>
           <ButtonBasic
             color={"secondary"}

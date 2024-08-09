@@ -2,6 +2,7 @@ import { Button, Input } from "@nextui-org/react";
 import { BsFillPlusCircleFill, BsDashCircleFill } from "react-icons/bs";
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+
 export const ButtonProgressiveForm = ({ innerText, handleFunction }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [iconTag, setIconTag] = useState(<BsDashCircleFill />);
@@ -40,6 +41,7 @@ export const ButtonAction = ({
   icon,
   color,
   type,
+  size,
 }) => {
   return (
     <Button
@@ -49,6 +51,7 @@ export const ButtonAction = ({
       className="h-10 w-full text-medium px-5 "
       startContent={icon}
       onPress={handleFunction}
+      size={size}
     >
       {innerText}
     </Button>
@@ -91,6 +94,13 @@ export const InputWithLabel = ({
   handleChange,
   value,
 }) => {
+  const isInvalid = React.useMemo(() => {
+    if (value === undefined || value === null || value === "") return false;
+    return !String(value).match(
+      /^[\uFF10-\uFF19\uFF21-\uFF3A\uFF41-\uFF5A\u4E00-\u6800\u6802-\u6851\u6853-\u9ad8\u9ada-\u9FFF\u3041-\u3096\u30A1-\u30FA（）．＿＋－―ーゞ々／・＆！'：\u3000]+$/
+    );
+  }, [value]);
+
   return (
     <Input
       isRequired
@@ -106,6 +116,7 @@ export const InputWithLabel = ({
         label: "p-0 mb-5 ",
         mainWrapper: `w-1/2 m-2 `,
       }}
+      isInvalid={isInvalid}
       value={value}
       onChange={handleChange}
       errorMessage="有効な値を入力してください。"

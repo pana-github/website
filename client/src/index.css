@@ -67,9 +67,9 @@
 }
 
 .animate-side-eye {
-  animation: side-eye 4s ease-in-out infinite;
+  animation: side-eye 2s ease-in-out infinite;
 }
 
 .animate-cheek {
-  animation: cheek 4s ease-in-out infinite;
+  animation: cheek 2s ease-in-out infinite;
 }

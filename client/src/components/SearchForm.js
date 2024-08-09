@@ -30,19 +30,23 @@ function SearchForm({ onValueChange }) {
   };
 
   const searchInputs = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     onValueChange(inputData);
   };
 
   return (
-    <form className="grid grid-cols-3 gap-3 my-8 " onSubmit={searchInputs}>
+    <form
+      className="grid grid-cols-3 gap-20 my-5 px-10 "
+      onSubmit={searchInputs}
+    >
       {variants.map((variant) => (
         <div
           key={variant}
-          className="col-span-2 grid grid-cols-3 mb-6 md:mb-0 gap-10 mr-10 items-center justify-center"
+          className="col-span-2 grid grid-cols-3 mb-6 md:mb-0 gap-10 items-center justify-center"
         >
           <Input
             type="number"
+            size="sm"
             variant={variant}
             label="電話番号"
             color="primary"
@@ -53,6 +57,7 @@ function SearchForm({ onValueChange }) {
 
           <Input
             type="text"
+            size="sm"
             variant={variant}
             label="備考"
             color="primary"
@@ -63,6 +68,7 @@ function SearchForm({ onValueChange }) {
 
           <Input
             type="text"
+            size="sm"
             variant={variant}
             label="直送先名"
             color="primary"
@@ -73,7 +79,7 @@ function SearchForm({ onValueChange }) {
         </div>
       ))}
 
-      <div className="grid grid-cols-2 mb-6 md:mb-0 gap-10 justify-cenetr items-center">
+      <div className="grid grid-cols-2 mb-6  px-10 md:mb-0 gap-10 justify-between items-center">
         <ButtonAction
           innerText={"検索"}
           handleFunction={searchInputs}
