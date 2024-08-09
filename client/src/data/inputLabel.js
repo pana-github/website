@@ -3,7 +3,7 @@ export const inputLabel = [
   {
     label: "営業所コード",
     name: "officeCode",
-    type: "number",
+    type: "text",
   },
   {
     label: "顧客",
