@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { InputWithLabel } from "./ButtonsAndInputs";
 
@@ -15,10 +15,10 @@ function CreateCustomerData({ isAbled, updateFormData }) {
 
     setFormData((prevData) => {
       const newData = { ...prevData, [name]: value };
-
-      updateFormData(newData);
       return newData;
     });
+    updateFormData(formData);
+    console.log(formData);
   };
 
   return (
@@ -27,42 +27,39 @@ function CreateCustomerData({ isAbled, updateFormData }) {
         cl={"align-middle justify-end flex-row m-0"}
         label={"得意先コード"}
         type={"text"}
-        value={formData["得意先コード"]}
         isAbled={isAbled}
+        name={"得意先コード"}
+        value={formData["得意先コード"]}
         handleChange={handleInputChange}
-        name="得意先コード"
       />
       <InputWithLabel
         label={"直送コード"}
         type={"text"}
-        value={formData["直送コード"]}
         isAbled={isAbled}
         cl={"align-middle justify-start flex-row m-0"}
-        onChange={handleInputChange}
-        name="直送コード"
+        name={"直送コード"}
+        value={formData["直送コード"]}
+        handleChange={handleInputChange}
       />
+
       <InputWithLabel
         label={"注文№"}
         type={"text"}
-        value={formData["注文№"]}
         isAbled={isAbled}
         cl={"align-middle justify-end flex-row m-0"}
-        onChange={handleInputChange}
-        name="注文№"
+        name={"注文№"}
+        value={formData["注文№"]}
+        handleChange={handleInputChange}
       />
       <InputWithLabel
         label={"備考"}
         type={"text"}
-        value={formData["備考"]}
         isAbled={isAbled}
         cl={"align-middle justify-start flex-row m-0"}
-        onChange={handleInputChange}
-        name="備考"
+        name={"備考"}
+        value={formData["備考"]}
+        handleChange={handleInputChange}
       />
-      <div>{formData["得意先コード"]}</div>
-      <div>{formData["直送コード"]}</div>
-      <div>{formData["注文№"]}</div>
-      <div>{formData["備考"]}</div>
     </div>
   );
 }

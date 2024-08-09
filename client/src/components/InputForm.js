@@ -2,19 +2,22 @@
 /* eslint-disable react/prop-types */
 // InputForm.js
 import React from "react";
-import { useNavigate } from "react-router";
+
 import { useForm, Controller } from "react-hook-form";
 import { Input, Select, SelectItem, Button } from "@nextui-org/react";
 import { today } from "@internationalized/date";
 import PropTypes from "prop-types";
 import { inputLabel } from "../data/inputLabel";
 import { tantou } from "../data/tantouData";
+import { useParams, useNavigate } from "react-router-dom";
+function InputForm({ isAbled, initialData, updateFormData }) {
+  const { id } = useParams();
 
-function InputForm({ isAbled, initialData, onSubmit, updateFormData }) {
   const {
     control,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({
     defaultValues: {
       ...initialData,
@@ -30,14 +33,24 @@ function InputForm({ isAbled, initialData, onSubmit, updateFormData }) {
       dayRange: new Set(["NA"]),
     },
   });
-
+  const navigate = useNavigate();
   const onFormSubmit = (data) => {
     updateFormData(data);
-    onSubmit();
+    const combinedFormData = { ...initialData, ...data };
+    console.log(combinedFormData);
+    navigate("/hinban", { state: { formData: combinedFormData } });
   };
+  React.useEffect(() => {
+    if (initialData && Object.keys(initialData).length === 0) {
+      navigate(`/order/${id}`);
+    }
+  }, [initialData, navigate]);
 
-  console.log("Form Data in InputForm:", initialData);
+  if (initialData && Object.keys(initialData).length === 0) {
+    return null; // or a loading indicator
+  }
 
+  console.log("InitialData", initialData);
   return (
     <form onSubmit={handleSubmit(onFormSubmit)}>
       <div className="text-center text-xl font-bold my-12 mx-10 text-background-500">
@@ -188,7 +201,7 @@ function InputForm({ isAbled, initialData, onSubmit, updateFormData }) {
 
 InputForm.propTypes = {
   isAbled: PropTypes.bool.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  // onSubmit: PropTypes.func.isRequired,
   updateFormData: PropTypes.func.isRequired,
 };
 

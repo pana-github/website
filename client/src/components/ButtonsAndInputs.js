@@ -85,7 +85,7 @@ ButtonBasic.propTypes = {
 
 export const InputWithLabel = ({
   label,
-  defaultVal,
+  name,
   isAbled,
   cl,
   handleChange,
@@ -94,20 +94,20 @@ export const InputWithLabel = ({
   return (
     <Input
       isRequired
+      name={name}
       validationBehavior="native"
       isDisabled={isAbled ? true : false}
       radius="sm"
       type="text"
       label={label}
       labelPlacement="outside"
-      defaultValue={defaultVal}
       classNames={{
         base: `${cl}`,
         label: "p-0 mb-5 ",
         mainWrapper: `w-1/2 m-2 `,
       }}
-      onChange={handleChange}
       value={value}
+      onChange={handleChange}
       errorMessage="有効な値を入力してください。"
     ></Input>
   );

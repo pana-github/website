@@ -20,7 +20,6 @@ function CreateOrderData({ isAbled, updateFormData }) {
       [name]: value,
     }));
     updateFormData(formData);
-    console.log(formData);
   };
 
   return (
@@ -31,48 +30,48 @@ function CreateOrderData({ isAbled, updateFormData }) {
           isAbled={isAbled}
           cl={"align-middle justify-end flex-row m-0"}
           value={formData["注文ＮＯ"]}
-          onChange={handleInputChange}
-          name="注文ＮＯ"
+          handleChange={handleInputChange}
+          name={"注文ＮＯ"}
         />
         <InputWithLabel
           label={"件名備考１"}
           isAbled={isAbled}
           cl={"align-middle justify-start flex-row m-0"}
           value={formData["件名備考１"]}
-          onChange={handleInputChange}
-          name="件名備考１"
+          handleChange={handleInputChange}
+          name={"件名備考１"}
         />
         <InputWithLabel
           label={"直送先名"}
           isAbled={isAbled}
           cl={"align-middle justify-end flex-row m-0"}
           value={formData["直送先名"]}
-          onChange={handleInputChange}
-          name="直送先名"
+          handleChange={handleInputChange}
+          name={"直送先名"}
         />
         <InputWithLabel
           label={"配送先住所１"}
           isAbled={isAbled}
           cl={"align-middle justify-start flex-row m-0"}
           value={formData["配送先住所１"]}
-          onChange={handleInputChange}
-          name="配送先住所１"
+          handleChange={handleInputChange}
+          name={"配送先住所１"}
         />
         <InputWithLabel
           label={"配送先住所２"}
           isAbled={isAbled}
           cl={"align-middle justify-end flex-row m-0"}
           value={formData["配送先住所２"]}
-          onChange={handleInputChange}
-          name="配送先住所２"
+          handleChange={handleInputChange}
+          name={"配送先住所２"}
         />
         <InputWithLabel
           label={"電話番号"}
           isAbled={isAbled}
           cl={"align-middle justify-start flex-row m-0"}
           value={formData["電話番号"]}
-          onChange={handleInputChange}
-          name="電話番号"
+          handleChange={handleInputChange}
+          name={"電話番号"}
         />
       </div>
     </div>

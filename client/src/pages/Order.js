@@ -44,11 +44,11 @@ function AddressForm() {
     setDetailsFormData((prevData) => ({ ...prevData, ...newData }));
   };
 
-  const handleFinalSubmit = () => {
-    const combinedFormData = { ...initialFormData, ...detailsFormData };
-    console.log(combinedFormData);
-    navigate("/hinban", { state: { formData: combinedFormData } });
-  };
+  // const handleFinalSubmit = () => {
+  //   const combinedFormData = { ...initialFormData, ...detailsFormData };
+  //   console.log(combinedFormData);
+  //   navigate("/hinban", { state: { formData: combinedFormData } });
+  // };
 
   return (
     <>
@@ -105,7 +105,7 @@ function AddressForm() {
               <InputForm
                 isAbled={isAbled}
                 updateFormData={updateDetailsFormData}
-                onSubmit={handleFinalSubmit}
+                initialData={initialFormData}
               />
             }
           />
